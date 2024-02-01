@@ -16,12 +16,12 @@ const relogio = setInterval(function contagemRegressiva() {
     return;
   }
 
-  let diasSemana = Math.floor(diferenca / (24 * 60 * 60 * 1000)); 
+  let diasSemana = Math.floor(diferenca / (24 * 60 * 60 * 1000));
   let hr = Math.floor((diferenca % (24 * 60 * 60 * 1000)) / (60 * 60 * 1000));
   let min = Math.floor((diferenca % (60 * 60 * 1000)) / (60 * 1000));
   let sec = Math.floor((diferenca % (60 * 1000)) / 1000);
 
-  if(diasSemana <10) diasSemana = '0' + diasSemana;
+  if (diasSemana < 10) diasSemana = '0' + diasSemana;
   if (hr < 10) hr = '0' + hr;
   if (min < 10) min = '0' + min;
   if (sec < 10) sec = '0' + sec;
@@ -31,3 +31,19 @@ const relogio = setInterval(function contagemRegressiva() {
   minutos.textContent = min;
   segundos.textContent = sec;
 }, 1000);
+
+document.addEventListener('DOMContentLoaded', function () {
+  const audio = document.getElementById('myAudio');
+  const audioIcon = document.getElementById('audioIcon');
+
+  audio.controlsList = 'nodownload';
+  
+  audioIcon.addEventListener('click', function () {
+    if (audio.paused) {
+      audio.play();
+    } else {
+      audio.pause();
+    }
+  });
+});
+  
